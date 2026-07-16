@@ -7,10 +7,12 @@ Repo: **github.com/neely/family-archive-system**
 ## Status
 - **Active:** Phase 2 — First family deployment (Ash)
 - **Last updated:** 2026-07-16
-- **Next action:** Populate `ash-archive-source/data/family-archive-full.json`
-  with a first real bootstrap pass — get material from Ash side of family
-  (GEDCOM if on Ancestry, or a document/notes dump), run the bootstrap
-  annotation session prompt from NOTES.md, review output before committing.
+- **Next action:** Set a fresh, narrowly-scoped PAT as PUBLIC_REPO_TOKEN on
+  ash-archive-source (Settings → Secrets → Actions) — do NOT reuse the
+  broad session token used to bootstrap these repos; revoke that one once
+  this setup is confirmed working. Then verify the deploy pipeline end to
+  end with a small test change before starting the real Ash annotation
+  session.
 
 <!-- This block is the "you are here" pointer. Overwrite it every shutdown.
      It lives ONLY here — never duplicate current state in another file. -->
@@ -38,10 +40,17 @@ Repo: **github.com/neely/family-archive-system**
   tracking and append-action support (for artifact views)
 - deploy.yml written — GitHub Action: private repo push → build →
   push sanitized output to paired public repo
-- Demo site built (voss-family.html) — fictional family, full feature set:
-  tree with detail panels, artifact grid with filters (person/location/
-  period/type/unannotated/open-questions), multi-view lightbox filmstrip,
-  timeline, mailto contribute buttons (artifact + propose-a-change on people)
+- Demo site built (voss-family.html, in templates/) — fictional family, full
+  feature set: tree with detail panels, artifact grid with filters (person/
+  location/period/type/unannotated/open-questions), multi-view lightbox
+  filmstrip, timeline, mailto contribute buttons (artifact + propose-a-change
+  on people). **Corrected during Ash repo setup (2026-07-16):** originally had
+  all data hardcoded in the HTML/JS, which would have silently broken the
+  entire private→public deploy pipeline (nothing for it to actually deliver).
+  Converted to runtime fetch of family-archive.json + dynamic generation-depth
+  tree layout. See NOTES.md known limitations for what this traded away
+  (SVG connector lines) and what's still outstanding (real image rendering,
+  still emoji placeholders).
 - GUI manager specified but not built — see reference/GUI_MANAGER_SPEC.md.
   Chat-interface workaround documented as a permanent first-class intake
   method, not just a stopgap, since it needs no API key
@@ -58,8 +67,9 @@ Repo: **github.com/neely/family-archive-system**
 - [ ] Populate first-pass family-archive-full.json for Ash family
 - [ ] Set up GitHub Action secret (PUBLIC_REPO_TOKEN) on ash-archive-source
       — use a fresh narrowly-scoped token for this, not a broad session PAT
-- [ ] Enable GitHub Pages on ash-archive (public repo)
-- [ ] Verify deploy.yml pipeline runs end to end
+- [x] Enable GitHub Pages on ash-archive (public repo) — live at
+      https://neely.github.io/ash-archive/
+- [ ] Verify deploy.yml pipeline runs end to end (blocked on the secret above)
 - [ ] Do first real annotation session with actual Ash family material
 - [ ] Update maintainer email in index.html mailto functions (currently
       placeholder your@email.com)
