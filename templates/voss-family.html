@@ -982,133 +982,8 @@
   <div id="tree" class="panel active">
     <p class="tree-section-label">Select any person to view their record — ✦ denotes deceased</p>
     <div class="tree-wrapper">
-      <div class="tree">
-
-        <!-- Gen I -->
-        <div class="gen-row" style="gap:2rem">
-          <div class="person-card deceased" onclick="showDetail('heinrich')" id="card-heinrich">
-            <div class="card-photo">👴</div>
-            <div class="card-name">Heinrich Voss</div>
-            <div class="card-years">1821 – 1889</div>
-            <div class="card-place">Tübingen, Württemberg</div>
-          </div>
-          <div class="person-card deceased" onclick="showDetail('maria')" id="card-maria">
-            <div class="card-photo">👵</div>
-            <div class="card-name">Maria née Heller</div>
-            <div class="card-years">1828 – 1904</div>
-            <div class="card-place">Stuttgart, Württemberg</div>
-          </div>
-        </div>
-
-        <!-- connector I→II -->
-        <div class="connector-row">
-          <svg class="tree-svg" viewBox="0 0 200 40" preserveAspectRatio="none">
-            <line x1="50%" y1="0" x2="50%" y2="40"/>
-            <line x1="25%" y1="40" x2="75%" y2="40"/>
-            <line x1="25%" y1="40" x2="25%" y2="40"/>
-            <line x1="75%" y1="40" x2="75%" y2="40"/>
-          </svg>
-        </div>
-
-        <!-- Gen II -->
-        <div class="gen-row" style="gap:1.5rem">
-          <div class="person-card deceased" onclick="showDetail('august')" id="card-august">
-            <div class="card-photo">👨</div>
-            <div class="card-name">August Voss</div>
-            <div class="card-years">1851 – 1923</div>
-            <div class="card-place">Milwaukee, WI</div>
-          </div>
-          <div class="person-card deceased" onclick="showDetail('lisette')" id="card-lisette">
-            <div class="card-photo">👩</div>
-            <div class="card-name">Lisette Voss</div>
-            <div class="card-years">1854 – 1941</div>
-            <div class="card-place">Chicago, IL</div>
-          </div>
-          <div class="person-card deceased" onclick="showDetail('ernst')" id="card-ernst">
-            <div class="card-photo">👴</div>
-            <div class="card-name">Ernst Voss</div>
-            <div class="card-years">1858 – 1917</div>
-            <div class="card-place">Milwaukee, WI</div>
-          </div>
-        </div>
-
-        <!-- connector II→III (August line) -->
-        <div class="connector-row">
-          <svg class="tree-svg" viewBox="0 0 400 40" preserveAspectRatio="none">
-            <line x1="50%" y1="0" x2="50%" y2="40"/>
-            <line x1="28%" y1="40" x2="72%" y2="40"/>
-          </svg>
-        </div>
-
-        <!-- Gen III (August's family) -->
-        <div class="gen-row" style="gap:1rem">
-          <div class="person-card deceased" onclick="showDetail('otto')" id="card-otto">
-            <div class="card-photo">👨</div>
-            <div class="card-name">Otto Voss</div>
-            <div class="card-years">1879 – 1944</div>
-            <div class="card-place">Milwaukee, WI</div>
-          </div>
-          <div class="person-card deceased" onclick="showDetail('clara')" id="card-clara">
-            <div class="card-photo">👩</div>
-            <div class="card-name">Clara Voss</div>
-            <div class="card-years">1881 – 1960</div>
-            <div class="card-place">Madison, WI</div>
-          </div>
-          <div class="person-card deceased" onclick="showDetail('walther')" id="card-walther">
-            <div class="card-photo">👨</div>
-            <div class="card-name">Walther Voss</div>
-            <div class="card-years">1884 – 1953</div>
-            <div class="card-place">Milwaukee, WI</div>
-          </div>
-        </div>
-
-        <!-- connector III→IV (Otto line) -->
-        <div class="connector-row">
-          <svg class="tree-svg" viewBox="0 0 400 40" preserveAspectRatio="none">
-            <line x1="50%" y1="0" x2="50%" y2="40"/>
-            <line x1="35%" y1="40" x2="65%" y2="40"/>
-          </svg>
-        </div>
-
-        <!-- Gen IV -->
-        <div class="gen-row" style="gap:1rem">
-          <div class="person-card deceased" onclick="showDetail('gertrude')" id="card-gertrude">
-            <div class="card-photo">👩</div>
-            <div class="card-name">Gertrude Voss</div>
-            <div class="card-years">1908 – 1992</div>
-            <div class="card-place">Milwaukee, WI</div>
-          </div>
-          <div class="person-card deceased" onclick="showDetail('rupert')" id="card-rupert">
-            <div class="card-photo">👨</div>
-            <div class="card-name">Rupert Voss</div>
-            <div class="card-years">1911 – 1968</div>
-            <div class="card-place">Chicago, IL</div>
-          </div>
-        </div>
-
-        <!-- connector IV→V -->
-        <div class="connector-row">
-          <svg class="tree-svg" viewBox="0 0 400 40" preserveAspectRatio="none">
-            <line x1="50%" y1="0" x2="50%" y2="40"/>
-          </svg>
-        </div>
-
-        <!-- Gen V -->
-        <div class="gen-row" style="gap:1rem">
-          <div class="person-card" onclick="showDetail('diane')" id="card-diane">
-            <div class="card-photo">👩</div>
-            <div class="card-name">Diane Voss-Kettner</div>
-            <div class="card-years">b. 1941</div>
-            <div class="card-place">Milwaukee, WI</div>
-          </div>
-          <div class="person-card" onclick="showDetail('harold')" id="card-harold">
-            <div class="card-photo">👨</div>
-            <div class="card-name">Harold Voss</div>
-            <div class="card-years">b. 1944</div>
-            <div class="card-place">Phoenix, AZ</div>
-          </div>
-        </div>
-
+      <div class="tree" id="tree-container">
+        <div class="no-select" style="padding:3rem 1rem">Loading archive…</div>
       </div>
     </div>
 
@@ -1196,465 +1071,139 @@
 
 <script>
 // ══════════════════════════════════════════
-//  DATA
+//  DATA — loaded at runtime from family-archive.json
 // ══════════════════════════════════════════
+//
+// This file is produced by build.js from family-archive-full.json in the
+// paired private repo, and deployed here automatically by the GitHub
+// Action on every push to the private repo's main branch. Never edit
+// family-archive.json directly in this repo — it will be overwritten on
+// the next deploy.
 
-const PEOPLE = {
-  heinrich: {
-    name: "Heinrich Voss",
-    born: "14 March 1821", died: "3 November 1889",
-    birthplace: "Tübingen, Kingdom of Württemberg",
-    deathplace: "Milwaukee, Wisconsin",
-    confidence: "high",
-    portrait: "👴",
-    portraitCaption: "No known photograph survives. Portrait approximated from family description.",
-    bio: [
-      "Heinrich Voss was a master carpenter trained in the guild tradition of Tübingen. Contemporary letters describe him as exacting in his craft and stubborn in his principles — a man who once refused a commission from a local merchant he considered dishonest.",
-      "The Revolution of 1848 disrupted his business severely, and by 1853 he had resolved to emigrate. He arrived at the port of Baltimore in April 1854 with his wife Maria, their two sons, and a trunk of carpentry tools that his grandson August later recalled smelling of linseed oil and pine resin.",
-      "In Milwaukee he found a German-speaking community large enough to feel recognizable. He established a small furniture workshop on Walnut Street by 1857. His work survives in at least two pieces confirmed to be in family possession."
-    ],
-    facts: {
-      "Occupation": "Master Carpenter",
-      "Religion": "Lutheran",
-      "Emigration": "Baltimore, April 1854",
-      "Languages": "German (primary), English (limited)"
-    },
-    openQuestions: ["Exact village of birth disputed — Tübingen or nearby Rottenburg?", "A third child may have died at sea; no documentation found"],
-    artifacts: ["letter_1853", "tool_chest", "photo_workshop"],
-    confidence_notes: "Birth year confirmed via church record transcription. Death year from Milwaukee death index."
-  },
-  maria: {
-    name: "Maria Voss née Heller",
-    born: "2 August 1828", died: "17 January 1904",
-    birthplace: "Stuttgart, Kingdom of Württemberg",
-    deathplace: "Milwaukee, Wisconsin",
-    confidence: "med",
-    portrait: "👵",
-    portraitCaption: "Cabinet card, c. 1878. Original in family possession.",
-    bio: [
-      "Maria Heller was the daughter of a Stuttgart bookbinder. Family letters suggest she was literate and well-read by the standards of her time and class — an uncommon trait that she passed deliberately to her children.",
-      "She outlived her husband Heinrich by fifteen years, living with her son August until her death in 1904. Her granddaughter Clara remembered her as 'small but enormous in opinion,' particularly regarding the proper raising of children and the inadequacy of American bread.",
-      "Three of Maria's letters to her sister in Stuttgart survive, written between 1858 and 1871. They are among the most detailed first-person accounts of German immigrant life in Milwaukee held in the family archive."
-    ],
-    facts: {
-      "Occupation": "Homemaker, seamstress",
-      "Father": "Johann Heller, bookbinder",
-      "Children": "August (1851), Lisette (1854), Ernst (1858)",
-      "Languages": "German only"
-    },
-    openQuestions: ["Middle name unknown", "Sister in Stuttgart — correspondence suggests her name was Friederike, but surname after marriage unclear"],
-    artifacts: ["letter_1858", "cabinet_card"],
-    confidence_notes: "Birth date uncertain — derived from death record age. Church records from Stuttgart not yet located."
-  },
-  august: {
-    name: "August Voss",
-    born: "12 July 1851", died: "4 March 1923",
-    birthplace: "Tübingen, Württemberg (emigrated 1854)",
-    deathplace: "Milwaukee, Wisconsin",
-    confidence: "high",
-    portrait: "👨",
-    portraitCaption: "Studio portrait, c. 1895. Hand-tinted. Original held by Harold Voss.",
-    bio: [
-      "August was three years old when his family emigrated, making him in many respects a German-American of the second generation rather than the first. He attended Milwaukee public schools and spoke English without an accent — a source of occasional friction with his more traditionally-minded father.",
-      "He apprenticed in his father's workshop but diverged professionally: he moved into the construction trades during Milwaukee's great expansion of the 1870s and 1880s, eventually running a small contracting firm with two German-born partners.",
-      "His household was among the first in the neighborhood to install electric lighting, in 1898, which his wife reportedly found 'garish and unsettling.' August kept meticulous account books; three of these survive and contain indirect records of family events."
-    ],
-    facts: {
-      "Occupation": "Carpenter, building contractor",
-      "Spouse": "Mathilda née Brauer (m. 1876)",
-      "Children": "Otto (1879), Clara (1881), Walther (1884)",
-      "Residence": "342 N. 5th St., Milwaukee (from 1882)"
-    },
-    openQuestions: ["Partnership dissolution in 1907 — cause unclear, possible dispute"],
-    artifacts: ["account_book", "photo_workshop", "house_photo"],
-    confidence_notes: "Well-documented via census records 1880, 1900, 1910 and Milwaukee city directories."
-  },
-  lisette: {
-    name: "Lisette Voss (later Braun)",
-    born: "6 February 1854", died: "22 October 1941",
-    birthplace: "Atlantic Ocean (en route from Bremen)",
-    deathplace: "Chicago, Illinois",
-    confidence: "med",
-    portrait: "👩",
-    portraitCaption: "Wedding photograph, 1876. Severely faded; digital enhancement applied.",
-    bio: [
-      "Lisette holds the family's most unusual birth record: she was born at sea, aboard the brig Hannover during the voyage from Bremen to Baltimore. Her father Heinrich reportedly noted this in a letter as 'a beginning suited to a difficult child.'",
-      "She married Friedrich Braun in 1876 and moved to Chicago, largely severing contact with the Milwaukee branch of the family for reasons that remain unclear. A letter from 1889 suggests a dispute over Heinrich's estate.",
-      "She lived to 87, long enough to correspond with her great-niece Gertrude in the 1930s. These late letters are warm and detailed, and represent the primary documentation of the Chicago branch."
-    ],
-    facts: {
-      "Spouse": "Friedrich Braun (m. 1876)",
-      "Unusual fact": "Born at sea, Atlantic Ocean",
-      "Occupation": "Seamstress (pre-marriage)",
-      "Chicago address": "Wicker Park neighborhood (1878–1920s)"
-    },
-    openQuestions: ["Friedrich Braun's occupation and family origin not established", "Nature of estate dispute with August (1889) unknown"],
-    artifacts: ["birth_at_sea", "letter_1889"],
-    confidence_notes: "Birth at sea confirmed by two independent family letters. Marriage record not yet located."
-  },
-  ernst: {
-    name: "Ernst Voss",
-    born: "3 September 1858", died: "11 April 1917",
-    birthplace: "Milwaukee, Wisconsin",
-    deathplace: "Milwaukee, Wisconsin",
-    confidence: "high",
-    portrait: "👴",
-    portraitCaption: "Photograph, c. 1910. Source unknown.",
-    bio: [
-      "Ernst was the first of the Voss children born in America, a fact he seems to have considered significant: he was, by family account, the most aggressively patriotic of the siblings, uncomfortable with the continued use of German in the household.",
-      "He worked as a bookkeeper for a Milwaukee brewing company for most of his adult life and died in 1917, just as anti-German sentiment in America reached its peak during the First World War. Whether he lived to see German street names changed and sauerkraut renamed 'liberty cabbage' is a matter of grim family timing.",
-      "His records are the least complete of the three siblings. No personal correspondence has been located."
-    ],
-    facts: {
-      "Occupation": "Bookkeeper, brewery",
-      "Spouse": "Anna née Schumacher (m. 1883)",
-      "Note": "No children confirmed",
-      "Death cause": "Pneumonia (per death record)"
-    },
-    openQuestions: ["Whether he and August maintained a close relationship in later life is unclear", "A reference in August's account book to 'E's difficulty' in 1909 is unexplained"],
-    artifacts: [],
-    confidence_notes: "Confirmed via census 1880, 1900, 1910 and Milwaukee death index."
-  },
-  otto: {
-    name: "Otto Voss",
-    born: "18 November 1879", died: "30 June 1944",
-    birthplace: "Milwaukee, Wisconsin",
-    deathplace: "Milwaukee, Wisconsin",
-    confidence: "high",
-    portrait: "👨",
-    portraitCaption: "Formal portrait, c. 1920. Original held by Diane Voss-Kettner.",
-    bio: [
-      "Otto trained as a machinist and worked for the Allis-Chalmers manufacturing company for most of his working life, an employment that was interrupted only by service in the Army during 1918 (he never saw combat, being stationed at a training camp in Georgia).",
-      "He married Else Krug in 1906 and they lived in the same South Side Milwaukee house for 36 years. He was by all accounts a steady, undemonstrative man — Gertrude remembered him as someone who expressed approval through silence and disapproval through further silence.",
-      "He died in 1944, and the post-war prosperity that might have eased his retirement never reached him. His daughter Gertrude kept his tools, which remain in the family."
-    ],
-    facts: {
-      "Occupation": "Machinist, Allis-Chalmers",
-      "Spouse": "Else née Krug (m. 1906)",
-      "Military": "US Army, 1918 (non-combat)",
-      "Residence": "South Side Milwaukee, 1908–1944"
-    },
-    openQuestions: ["Second son rumored but not confirmed in records"],
-    artifacts: ["account_book", "military_card"],
-    confidence_notes: "Well-documented."
-  },
-  clara: {
-    name: "Clara Voss (later Hartmann)",
-    born: "14 April 1881", died: "9 February 1960",
-    birthplace: "Milwaukee, Wisconsin",
-    deathplace: "Madison, Wisconsin",
-    confidence: "high",
-    portrait: "👩",
-    portraitCaption: "Snapshot, c. 1935. Informal. Source: Gertrude Voss papers.",
-    bio: [
-      "Clara was the family intellectual, the only one of August's children to complete secondary school and one of the first in the extended family to attend university, graduating from the University of Wisconsin in 1903 with a degree in education.",
-      "She taught high school German for twenty years, then English after the Great War made German an awkward subject. She married Karl Hartmann in 1912, and the couple had three children, who constitute a branch of the family not fully documented in this archive.",
-      "She wrote a partial family memoir in the 1950s, approximately forty handwritten pages, which is one of the most valuable documents in the family archive. It is inconsistently dated and self-contradictory in places, but invaluable."
-    ],
-    facts: {
-      "Education": "Univ. of Wisconsin, 1903",
-      "Occupation": "High school teacher",
-      "Spouse": "Karl Hartmann (m. 1912)",
-      "Legacy": "Author of partial family memoir, c. 1955"
-    },
-    openQuestions: ["Hartmann branch not yet fully documented", "Memoir pages 18–24 are water-damaged and partially illegible"],
-    artifacts: ["clara_memoir", "cabinet_card"],
-    confidence_notes: "Very well-documented. UW enrollment confirmed."
-  },
-  walther: {
-    name: "Walther Voss",
-    born: "2 December 1884", died: "14 August 1953",
-    birthplace: "Milwaukee, Wisconsin",
-    deathplace: "Milwaukee, Wisconsin",
-    confidence: "med",
-    portrait: "👨",
-    portraitCaption: "No formal portrait located. Appears in group photograph, c. 1912.",
-    bio: [
-      "Walther is the least-documented of August's three children. He worked variously as a delivery driver, warehouse worker, and at some point in the 1920s appears to have spent time in Detroit, though the reason is unknown.",
-      "Family memory of him is mixed. Clara's memoir mentions him briefly and not warmly. He appears in the 1930 census living alone in a Milwaukee boarding house.",
-      "He died in 1953 and was buried in Forest Home Cemetery. No obituary has been located. The family's knowledge of him beyond the bare record is thin."
-    ],
-    facts: {
-      "Occupation": "Various (laborer, driver)",
-      "Marital status": "Unknown — never confirmed",
-      "1930 Census": "Rooming house, Milwaukee",
-      "Burial": "Forest Home Cemetery, Milwaukee"
-    },
-    openQuestions: ["Detroit period 1922–1926 unexplained", "Any marriage or children unknown", "Estrangement from siblings — reason speculative"],
-    artifacts: [],
-    confidence_notes: "Sparse documentation. Confirmed via census 1900, 1910, 1930 only."
-  },
-  gertrude: {
-    name: "Gertrude Voss (later Schreiber)",
-    born: "12 January 1908", died: "3 March 1992",
-    birthplace: "Milwaukee, Wisconsin",
-    deathplace: "Milwaukee, Wisconsin",
-    confidence: "high",
-    portrait: "👩",
-    portraitCaption: "Color photograph, c. 1970. Original held by Diane Voss-Kettner.",
-    bio: [
-      "Gertrude was the principal keeper of family memory for most of the twentieth century. She began collecting family documents, photographs, and stories as a young woman and maintained this archive for sixty years.",
-      "She married Bernard Schreiber in 1931, during the Depression, and the couple raised two children — Diane and Harold — in a small house in Riverwest that Gertrude kept until her death at 84. She was known for her extraordinary memory for dates and for a dry, precise way of describing people.",
-      "It was Gertrude who transcribed several of Maria's German letters into English in the 1950s, creating the versions currently in the archive. She also conducted oral history interviews with several older relatives, the recordings of which are on cassette tape and have not yet been digitized."
-    ],
-    facts: {
-      "Spouse": "Bernard Schreiber (m. 1931)",
-      "Children": "Diane (b. 1941), Harold (b. 1944)",
-      "Role": "Primary family archivist",
-      "Cassettes": "~12 hours of oral history recordings, undigitized"
-    },
-    openQuestions: ["Oral history cassettes — location and playback viability unknown", "A reference to a cousin 'Wilhelm' in her notes has not been placed in the tree"],
-    artifacts: ["cabinet_card", "photo_workshop", "house_photo", "clara_memoir"],
-    confidence_notes: "Extremely well-documented. Living memory within the family."
-  },
-  rupert: {
-    name: "Rupert Voss",
-    born: "4 July 1911", died: "18 December 1968",
-    birthplace: "Milwaukee, Wisconsin",
-    deathplace: "Chicago, Illinois",
-    confidence: "high",
-    portrait: "👨",
-    portraitCaption: "Snapshot, 1955. Source: Harold Voss.",
-    bio: [
-      "Rupert moved to Chicago in his mid-twenties, perhaps attracted by the city's larger manufacturing economy or perhaps by something less documented. He worked as a machinist, following his father Otto's trade, at a series of companies on the South Side.",
-      "He died young at 57, of a heart attack, which the family attributed to work stress and cigarettes. His death left his wife Margaret and their son Thomas in Chicago, who represent an underdeveloped branch of the archive.",
-      "Harold remembers him as 'the fun one' — present at family gatherings with jokes and gifts, and then gone, back to Chicago, as if the visit had been a performance."
-    ],
-    facts: {
-      "Occupation": "Machinist, Chicago",
-      "Spouse": "Margaret née Sullivan (m. 1939)",
-      "Children": "Thomas Voss (b. 1942, Chicago branch)",
-      "Death cause": "Myocardial infarction"
-    },
-    openQuestions: ["Chicago branch (Thomas and descendants) not documented", "Margaret Sullivan's family background not researched"],
-    artifacts: ["military_card"],
-    confidence_notes: "Confirmed via Milwaukee birth record, Chicago death record, 1940 census."
-  },
-  diane: {
-    name: "Diane Voss-Kettner",
-    born: "3 September 1941", died: null,
-    birthplace: "Milwaukee, Wisconsin",
-    deathplace: null,
-    confidence: "high",
-    portrait: "👩",
-    portraitCaption: "Photograph, 2018. Family gathering. Source: Harold Voss.",
-    bio: [
-      "Diane is one of two living members of the direct Voss line currently documented in this archive. She married Robert Kettner in 1963 and raised three children in the Milwaukee area, where she still lives.",
-      "She has been deeply involved in continuing her mother Gertrude's archival work, particularly in digitizing photographs and corresponding with the Clara Hartmann branch. She is the primary living contact for this research project.",
-      "She remembers her grandmother Clara Voss Hartmann clearly, and her oral accounts of Clara are among the most valuable sources for the early twentieth-century family history."
-    ],
-    facts: {
-      "Spouse": "Robert Kettner (m. 1963)",
-      "Residence": "Milwaukee area (current)",
-      "Role": "Active family researcher",
-      "Contact": "Primary liaison for archive project"
-    },
-    openQuestions: ["Kettner branch — three children, documentation in progress"],
-    artifacts: ["house_photo", "clara_memoir"],
-    confidence_notes: "Living family member. Information current as of 2024."
-  },
-  harold: {
-    name: "Harold Voss",
-    born: "22 February 1944", died: null,
-    birthplace: "Milwaukee, Wisconsin",
-    deathplace: null,
-    confidence: "high",
-    portrait: "👨",
-    portraitCaption: "Photograph, 2019.",
-    bio: [
-      "Harold is the younger of Gertrude's two children and the other living member of the direct Voss line in this archive. He moved to Arizona in the 1970s for work and has lived in the Phoenix area since.",
-      "He holds in his possession the hand-tinted studio portrait of his great-grandfather August, the military service card for his grandfather Otto, and several other artifacts that have not yet been fully catalogued.",
-      "He describes himself as 'not the family historian' — that was Gertrude and then Diane — but his memories of Rupert and of the Milwaukee house are vivid and have filled in several gaps."
-    ],
-    facts: {
-      "Residence": "Phoenix, Arizona (current)",
-      "Holdings": "Several artifacts not yet fully catalogued",
-      "Spouse": "Patricia née Morales (m. 1971)",
-      "Children": "Two; Phoenix branch in progress"
-    },
-    openQuestions: ["Phoenix branch — two children, not yet documented", "Artifacts in Harold's possession need formal cataloguing"],
-    artifacts: ["account_book", "military_card"],
-    confidence_notes: "Living family member."
+let PEOPLE = {};
+let ARTIFACTS = [];
+let TIMELINE = [];
+let ARCHIVE_META = { archive_name: "Family Archive" };
+
+async function loadArchive() {
+  try {
+    const res = await fetch('family-archive.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('family-archive.json not found (HTTP ' + res.status + ')');
+    const data = await res.json();
+
+    // people/artifacts arrive as arrays in the JSON; index people by id for lookup
+    PEOPLE = {};
+    (data.people || []).forEach(p => { PEOPLE[p.id] = p; });
+    ARTIFACTS = data.artifacts || [];
+    TIMELINE = data.timeline || [];
+    ARCHIVE_META = data._build ? { ...data._build, archive_name: data.archive_name } : { archive_name: data.archive_name || "Family Archive" };
+
+    renderTree();
+    document.title = (data.archive_name || 'Family Archive');
+  } catch (err) {
+    console.error('Failed to load archive:', err);
+    document.getElementById('tree').innerHTML =
+      '<div class="no-select" style="padding:4rem 1rem">Archive data not yet available. ' +
+      'This site will populate automatically once family-archive.json is deployed here ' +
+      'from the private source repo.<br><br><span style="font-size:0.75rem;opacity:0.7">' +
+      (err.message || '') + '</span></div>';
   }
-};
+}
 
-const ARTIFACTS = [
-  {
-    id: "letter_1853",
-    emoji: "📜",
-    title: "Letter, Heinrich to Brother Karl",
-    date: "November 1853",
-    type: "Correspondence",
-    people: ["heinrich"],
-    desc: "Four-page letter in High German, written from Tübingen to Heinrich's brother Karl in Hamburg. Discusses the decision to emigrate, financial circumstances, and anxiety about the sea crossing. Partially transcribed. Original in family possession.",
-    condition: "Good — some foxing on final page",
-    source: "Voss family archive",
-    confidence: "high"
-  },
-  {
-    id: "letter_1858",
-    emoji: "📜",
-    title: "Letter, Maria to Sister Friederike",
-    date: "14 June 1858",
-    type: "Correspondence",
-    people: ["maria"],
-    desc: "One of three surviving letters from Maria to her Stuttgart sister. Describes Milwaukee in summer, the birth of Ernst, and complaints about American flour. Written in a clear, educated hand. Transcribed by Gertrude Schreiber, 1952.",
-    condition: "Fair — two tears repaired with tape (archivally problematic)",
-    source: "Voss family archive",
-    confidence: "high"
-  },
-  {
-    id: "tool_chest",
-    emoji: "🪚",
-    title: "Heinrich's Carpentry Chest",
-    date: "c. 1845–1854",
-    type: "Object",
-    people: ["heinrich", "august"],
-    desc: "A wooden tool chest believed to be the one carried by Heinrich from Württemberg. Contains 14 tools of German manufacture. August's account book references the chest specifically in an 1889 estate note. Held by Diane Voss-Kettner.",
-    condition: "Good — shows use wear consistent with age",
-    source: "Diane Voss-Kettner collection",
-    confidence: "med",
-    views: [
-      { id: "tool_chest_full", role: "full", image: null, caption: "Full chest, closed — showing exterior joinery and iron hardware" },
-      { id: "tool_chest_detail_1", role: "detail", image: null, caption: "Maker's mark stamped inside lid — 'H.V. Tübingen' with guild mark" },
-      { id: "tool_chest_detail_2", role: "detail", image: null, caption: "Interior tray showing original tool layout, 14 tools present" },
-      { id: "tool_chest_verso", role: "verso", image: null, caption: "Base of chest — hand-cut dovetail joinery, consistent with 1840s German guild work" }
-    ]
-  },
-  {
-    id: "cabinet_card",
-    emoji: "📷",
-    title: "Cabinet Card Portrait, Maria Voss",
-    date: "c. 1878",
-    type: "Photograph",
-    people: ["maria", "gertrude", "clara"],
-    desc: "Studio cabinet card photograph, likely taken by a Milwaukee photographer. Shows a woman identified in pencil on the reverse as 'Mother Voss, 1878 approx.' Consistent with Maria's estimated age. Original in good condition. Scanned at 1200 dpi.",
-    condition: "Very good",
-    source: "Gertrude Schreiber papers → Diane Voss-Kettner",
-    confidence: "med"
-  },
-  {
-    id: "account_book",
-    emoji: "📒",
-    title: "August Voss Account Book, Vol. II",
-    date: "1898–1912",
-    type: "Document",
-    people: ["august", "otto", "harold"],
-    desc: "Leather-bound ledger containing August's business and household accounts. Indirectly records family events: the birth of grandchildren is noted in margins, as is the death of Heinrich in 1889. Contains the unexplained reference to 'E's difficulty' in 1909.",
-    condition: "Good — binding loose",
-    source: "Harold Voss collection",
-    confidence: "high"
-  },
-  {
-    id: "photo_workshop",
-    emoji: "📷",
-    title: "Voss Carpentry Workshop, Exterior",
-    date: "c. 1890",
-    type: "Photograph",
-    people: ["heinrich", "august", "gertrude"],
-    desc: "Street-level photograph showing the exterior of what is believed to be the Voss workshop on Walnut Street. Two men visible in doorway — one may be August (age ~39). Sign partially legible: 'Voss & [?] Fine Furniture and Cabinetry.' Source unknown; found among Gertrude's papers.",
-    condition: "Fair — significant silver mirroring at edges",
-    source: "Gertrude Schreiber papers",
-    confidence: "med"
-  },
-  {
-    id: "house_photo",
-    emoji: "🏠",
-    title: "N. 5th Street House, Milwaukee",
-    date: "c. 1920",
-    type: "Photograph",
-    people: ["august", "gertrude", "diane"],
-    desc: "Snapshot of the house at 342 N. 5th Street, Milwaukee, where August lived from 1882. The house was demolished in the 1960s urban renewal. This photograph is the only known image. Gertrude is believed to be the young woman on the porch.",
-    condition: "Good",
-    source: "Diane Voss-Kettner collection",
-    confidence: "high"
-  },
-  {
-    id: "clara_memoir",
-    emoji: "📓",
-    title: "Clara Voss Hartmann: Family Memoir Fragment",
-    date: "c. 1955",
-    type: "Manuscript",
-    people: ["clara", "gertrude", "diane"],
-    desc: "Approximately 40 handwritten pages in Clara's hand, covering family history from her grandparents' emigration through her own childhood. Written in English with occasional German phrases. Pages 18–24 water-damaged. Among the most significant documents in the archive.",
-    condition: "Mixed — pages 18–24 partially illegible",
-    source: "Gertrude Schreiber papers → Diane Voss-Kettner",
-    confidence: "high"
-  },
-  {
-    id: "birth_at_sea",
-    emoji: "⚓",
-    title: "Birth Record (at sea), Lisette Voss",
-    date: "6 February 1854",
-    type: "Document",
-    people: ["lisette", "heinrich", "maria"],
-    desc: "A handwritten notation in Heinrich's personal papers recording Lisette's birth during the Atlantic crossing. 'Born aboard the brig Hannover, day six of February 1854, two days from Baltimore.' Remarkable provenance. Original fragile.",
-    condition: "Fragile — handle only with gloves",
-    source: "Voss family archive",
-    confidence: "high"
-  },
-  {
-    id: "letter_1889",
-    emoji: "📜",
-    title: "Letter, Lisette Braun to August Voss",
-    date: "December 1889",
-    type: "Correspondence",
-    people: ["lisette", "august"],
-    desc: "Acrimonious letter from Lisette (Chicago) to August (Milwaukee) regarding the disposition of their father Heinrich's estate. References a prior agreement that August apparently did not honor. Significant for understanding the family rift. Transcribed; original held by Diane.",
-    condition: "Good",
-    source: "Voss family archive",
-    confidence: "high"
-  },
-  {
-    id: "military_card",
-    emoji: "🎖️",
-    title: "US Army Registration Cards: Otto & Rupert Voss",
-    date: "1918 / 1942",
-    type: "Document",
-    people: ["otto", "rupert", "harold"],
-    desc: "WWI draft registration card for Otto Voss (1918) and WWII draft registration card for Rupert Voss (1942). Both confirm occupations, addresses, and physical descriptions. Rupert's card notes him as 5'10\", brown hair, hazel eyes — the only physical description of him in the record.",
-    condition: "Excellent — official copies",
-    source: "National Archives / Harold Voss",
-    confidence: "high"
+document.addEventListener('DOMContentLoaded', loadArchive);
+
+// ══════════════════════════════════════════
+//  TREE AUTO-LAYOUT
+// ══════════════════════════════════════════
+//
+// Generates the generational tree layout from parents/children arrays on
+// each person record. Simplified vs. the hand-tuned original Voss demo:
+// rows are grouped by computed generation depth, no SVG connector lines
+// (those were manually positioned per-family in the original and don't
+// generalize well to arbitrary tree shapes). Known limitation — see
+// family-archive-system NOTES.md.
+
+function computeGenerations() {
+  const ids = Object.keys(PEOPLE);
+  if (ids.length === 0) return [];
+
+  const depth = {};
+  // Roots: anyone with no parents recorded (or parents not in this archive)
+  const roots = ids.filter(id => {
+    const p = PEOPLE[id];
+    const parents = (p.parents || []).filter(pid => PEOPLE[pid]);
+    return parents.length === 0;
+  });
+
+  // BFS down from roots via children
+  const queue = roots.map(id => ({ id, d: 0 }));
+  roots.forEach(id => { depth[id] = 0; });
+
+  while (queue.length) {
+    const { id, d } = queue.shift();
+    const p = PEOPLE[id];
+    (p.children || []).forEach(cid => {
+      if (!PEOPLE[cid]) return;
+      const nd = d + 1;
+      if (depth[cid] === undefined || nd > depth[cid]) {
+        depth[cid] = nd;
+        queue.push({ id: cid, d: nd });
+      }
+    });
   }
-];
 
-const TIMELINE = [
-  { year: 1821, title: "Heinrich Voss born", body: "Born in Tübingen, Kingdom of Württemberg, into a family of craftsmen.", who: "heinrich", major: false },
-  { year: 1828, title: "Maria Heller born", body: "Born in Stuttgart; father a bookbinder.", who: "maria", major: false },
-  { year: 1848, title: "Revolutions of 1848", body: "Political upheaval disrupts Heinrich's carpentry business. First serious consideration of emigration.", who: null, major: true },
-  { year: 1851, title: "August Voss born", body: "First child born in Tübingen.", who: "august", major: false },
-  { year: 1853, title: "Decision to emigrate", body: "Heinrich writes to his brother Karl announcing the family's plan to leave for America.", who: "heinrich", major: true },
-  { year: 1854, title: "Lisette born at sea", body: "Born aboard the brig Hannover, two days from Baltimore.", who: "lisette", major: true },
-  { year: 1854, title: "Voss family arrives in America", body: "Arrive at Baltimore. Travel by rail to Milwaukee, Wisconsin, joining the established German immigrant community there.", who: "heinrich", major: true },
-  { year: 1857, title: "Workshop established", body: "Heinrich opens furniture workshop on Walnut Street, Milwaukee.", who: "heinrich", major: false },
-  { year: 1858, title: "Ernst Voss born", body: "First Voss child born in America.", who: "ernst", major: false },
-  { year: 1876, title: "Lisette marries Friedrich Braun", body: "Moves to Chicago; contact with Milwaukee branch diminishes.", who: "lisette", major: false },
-  { year: 1879, title: "Otto Voss born", body: "First of August's three children.", who: "otto", major: false },
-  { year: 1881, title: "Clara Voss born", body: "", who: "clara", major: false },
-  { year: 1882, title: "August moves to N. 5th Street", body: "Family home on N. 5th Street, Milwaukee — the house that appears in the c. 1920 photograph.", who: "august", major: false },
-  { year: 1884, title: "Walther Voss born", body: "", who: "walther", major: false },
-  { year: 1889, title: "Heinrich Voss dies", body: "Death of the family patriarch. Triggers estate dispute with Lisette.", who: "heinrich", major: true },
-  { year: 1889, title: "Estate dispute: Lisette vs. August", body: "Acrimonious correspondence over Heinrich's estate. Rift between Chicago and Milwaukee branches deepens.", who: "lisette", major: false },
-  { year: 1903, title: "Clara graduates from UW–Madison", body: "One of the first in the extended family to complete university education.", who: "clara", major: true },
-  { year: 1904, title: "Maria Voss dies", body: "Dies at age 75, having outlived her husband by fifteen years.", who: "maria", major: false },
-  { year: 1906, title: "Otto marries Else Krug", body: "", who: "otto", major: false },
-  { year: 1908, title: "Gertrude Voss born", body: "Future family archivist and keeper of collective memory.", who: "gertrude", major: false },
-  { year: 1911, title: "Rupert Voss born", body: "", who: "rupert", major: false },
-  { year: 1917, title: "Ernst Voss dies", body: "Dies of pneumonia. Anti-German sentiment at its peak during WWI.", who: "ernst", major: false },
-  { year: 1918, title: "Otto serves in WWI", body: "Stationed at training camp in Georgia; never sees combat. Returns to Milwaukee.", who: "otto", major: false },
-  { year: 1923, title: "August Voss dies", body: "Death of the second generation's central figure.", who: "august", major: true },
-  { year: 1931, title: "Gertrude marries Bernard Schreiber", body: "During the Depression. Two children follow: Diane (1941) and Harold (1944).", who: "gertrude", major: false },
-  { year: 1941, title: "Diane Voss born", body: "", who: "diane", major: false },
-  { year: 1941, title: "Lisette Voss Braun dies", body: "Dies in Chicago at age 87, having outlived both siblings.", who: "lisette", major: false },
-  { year: 1944, title: "Otto Voss dies / Harold born", body: "Two events in the same year: Otto dies at 64; Harold Voss born in Milwaukee.", who: "otto", major: false },
-  { year: 1953, title: "Walther Voss dies", body: "The least-documented of August's children. Buried Forest Home Cemetery.", who: "walther", major: false },
-  { year: 1955, title: "Clara writes family memoir", body: "~40 handwritten pages covering four generations. Among the most significant documents in the archive.", who: "clara", major: true },
-  { year: 1960, title: "Clara Voss Hartmann dies", body: "Dies in Madison, Wisconsin, at age 78.", who: "clara", major: false },
-  { year: 1968, title: "Rupert Voss dies", body: "Dies of heart attack in Chicago at age 57, leaving wife Margaret and son Thomas.", who: "rupert", major: true },
-  { year: 1992, title: "Gertrude Schreiber dies", body: "Death of the family archivist. Her collected papers and oral history cassettes pass to Diane.", who: "gertrude", major: true },
-  { year: 2024, title: "Digitization project begins", body: "Diane and Harold collaborate on formal archiving. This annotation database initiated.", who: "diane", major: true }
-];
+  // Anyone unreached (isolated record, no parents/children in archive) — put at depth 0
+  ids.forEach(id => { if (depth[id] === undefined) depth[id] = 0; });
+
+  const maxDepth = Math.max(...Object.values(depth));
+  const generations = Array.from({ length: maxDepth + 1 }, () => []);
+  ids.forEach(id => generations[depth[id]].push(id));
+
+  // Within a generation, group spouses adjacent to each other for readability
+  generations.forEach(gen => {
+    gen.sort((a, b) => {
+      const ay = PEOPLE[a].born_year || 9999;
+      const by = PEOPLE[b].born_year || 9999;
+      return ay - by;
+    });
+  });
+
+  return generations;
+}
+
+function renderTree() {
+  const container = document.getElementById('tree-container');
+  const ids = Object.keys(PEOPLE);
+
+  if (ids.length === 0) {
+    container.innerHTML = '<div class="no-select" style="padding:3rem 1rem">' +
+      'No people in this archive yet. Once family-archive-full.json is populated ' +
+      'in the private source repo and deployed, the tree will render here.</div>';
+    return;
+  }
+
+  const generations = computeGenerations();
+
+  container.innerHTML = generations.map(gen => `
+    <div class="gen-row" style="gap:1.25rem">
+      ${gen.map(id => {
+        const p = PEOPLE[id];
+        const isDeceased = !!p.died;
+        const bornDisplay = p.born_year ? p.born_year : '?';
+        const diedDisplay = isDeceased ? (p.died.value || p.died) : null;
+        const yearsDisplay = diedDisplay ? `${bornDisplay} – ${diedDisplay}` : `b. ${bornDisplay}`;
+        const birthplace = (p.birthplace && p.birthplace.value) ? p.birthplace.value : (p.birthplace || '');
+        return `
+        <div class="person-card ${isDeceased ? 'deceased' : ''}" onclick="showDetail('${id}')" id="card-${id}">
+          <div class="card-photo">${p.portrait || '👤'}</div>
+          <div class="card-name">${p.name}</div>
+          <div class="card-years">${yearsDisplay}</div>
+          <div class="card-place">${birthplace}</div>
+        </div>`;
+      }).join('')}
+    </div>
+  `).join('<div class="connector-row" style="height:24px"></div>');
+}
 
 // ══════════════════════════════════════════
 //  UI LOGIC
