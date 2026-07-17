@@ -28,6 +28,61 @@ it's the single most important file in this repo.
   family), no build step needed since the site is static HTML with a
   runtime fetch — Cloudflare just needs to serve the files as-is.
 
+## Propagation model: hub → family repos (read this to understand the roadmap)
+
+**There is no automatic sync.** This is the most important thing to
+understand about how the four repos relate to each other.
+
+`family-archive-system` is a **reference and template layer**, not a shared
+dependency the family repos import at runtime. `build.js`, `manage.js`,
+`deploy.yml`, and `templates/voss-family.html` here are the *canonical,
+current* versions. Each family's `-source` and public repo get **copies** of
+these files at setup time. If a bug gets fixed or a feature gets added here
+later, it does **not** automatically appear in `ash-archive-source` or any
+other family repo — someone (a future Claude session, most likely) has to
+manually re-copy the updated file(s) into each family repo that needs it.
+
+**Why this was the choice:** four independent, infrequently-changing repos
+with occasional manual re-sync is simpler than git submodules, a package
+registry, or a build step that pulls from this repo at deploy time — all of
+which would add real complexity for a problem (schema/tooling changes) that
+should be rare once the pattern is proven on Ash.
+
+**What this means in practice:**
+- Schema and workflow *decisions* (the stuff in this file) apply to all
+  families immediately, by reference — every family repo's own NOTES.md
+  says "read family-archive-system's NOTES.md first," so a decision made
+  here is visible everywhere without copying.
+- Schema and workflow *code* (build.js, manage.js, deploy.yml, the site
+  template) only updates in a family repo when someone deliberately
+  re-copies it there. **This is a manual step, not automatic.**
+- When Ash's real-world use surfaces a bug or improvement in the shared
+  code, the fix should be made **here first**, logged in this file and
+  PLAN.md, then manually propagated to ash-archive-source / ash-archive.
+  Only once Branstrom/Beal/Neely exist would it also need propagating to
+  them.
+
+**The actual roadmap, phase by phase:**
+
+1. **Prove the pattern on Ash** (current phase). Get the pipeline actually
+   running end to end, do real annotation sessions, find out what's wrong
+   with the schema/template/workflow that only shows up with real messy
+   data. Fix problems *here*, in family-archive-system, as they're found —
+   and re-copy fixes into ash-archive-source/ash-archive as needed. Ash is
+   deliberately the proving ground, not a production-quality archive yet.
+2. **Stabilize.** Once Ash has real data flowing smoothly — bootstrap done,
+   a few annotation sessions completed, the mailto loop tested with an
+   actual family member — treat the framework as proven. Do one final pass
+   updating this repo's docs with everything learned.
+3. **Spin up the next three families**, following the now-proven setup
+   checklist (README.md → "Using this to start a family archive"), copying
+   the *stabilized* versions of build.js/manage.js/deploy.yml/template —
+   not whatever was current back when Ash was set up.
+4. **Build the GUI manager** (reference/GUI_MANAGER_SPEC.md), once the
+   manual chat-mode + manage.js CLI workflow is well understood from actual
+   use across at least Ash. Building it earlier risks specifying against
+   assumptions that real use will contradict.
+
 ## Multi-family model (locked)
 
 - What: One system repo (this one, `family-archive-system`) holds shared
@@ -184,6 +239,47 @@ Germany" for a pre-unification record).
   shows, but the actual requirement was simpler — sole maintainer doesn't
   need multi-tier access, just needs private data captured now and
   auto-published later. Overkill for the real need.
+
+### What's actually sensitive (the judgment behind the gate)
+
+The gate mechanism above is about *when* data becomes public. This is about
+*what* to treat carefully in the first place — matters when writing bio text
+or facts for a living person, since those fields aren't redacted by the gate
+and need to be safe as written from the start.
+
+**Treat with care (living people):**
+- **Full birthdate** (month+day+year together) — this is identity-verification
+  data at banks and government agencies. Year alone is fine and is what the
+  public site shows (`born_year`). Never put a full DOB in `bio` or `facts`
+  prose even for a living person, since those fields aren't gated.
+- **Current address, phone, email** — obviously private, and these are the
+  fields the gate actually redacts.
+- **Minors** — anyone under 18. Don't name them individually or include
+  their photos in public-facing content, even if a parent or grandparent
+  provided it. Age them out: "two grandchildren" not named children with
+  photos. This applies regardless of the `died` gate — a minor's record, if
+  one exists at all, should be written conservatively from the start rather
+  than relying on the gate to protect them (the gate protects *contact
+  info*, not identity/photo exposure, and minors deserve a stricter default).
+
+**Actually fine, don't over-restrict:**
+- Old addresses of deceased people — historical record, not sensitive
+- Cause of death — fine
+- Family disputes, estrangement, illegitimacy — this is genealogical record,
+  not gossip; archives publish this routinely, treat it the same way
+- Immigration records, census data — already public record
+
+**Why this matters beyond the gate:** the public `family-archive.json` is a
+scrapeable, machine-readable file — not just a webpage someone might casually
+browse. Anyone can pull the whole dataset trivially. That's fine for
+historical content but reinforces treating anyone born after roughly 1930
+(i.e., plausibly still alive or close family of someone who is) with the
+light touch described above, and being conservative by default for minors
+regardless of what a well-meaning relative sends in.
+
+**Practical rule when writing a living person's bio/facts:** if you wouldn't
+say it to a stranger at a family reunion within earshot of the person it's
+about, don't put it in a public-facing field.
 
 ---
 

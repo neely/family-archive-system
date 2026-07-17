@@ -7,12 +7,12 @@ Repo: **github.com/neely/family-archive-system**
 ## Status
 - **Active:** Phase 2 — First family deployment (Ash)
 - **Last updated:** 2026-07-16
-- **Next action:** Set a fresh, narrowly-scoped PAT as PUBLIC_REPO_TOKEN on
-  ash-archive-source (Settings → Secrets → Actions) — do NOT reuse the
-  broad session token used to bootstrap these repos; revoke that one once
-  this setup is confirmed working. Then verify the deploy pipeline end to
-  end with a small test change before starting the real Ash annotation
-  session.
+- **Next action:** Connect Cloudflare Pages to ash-archive (dashboard —
+  can't be done via API/token), then set the PUBLIC_REPO_TOKEN secret and
+  repo variables on ash-archive-source. Both are dashboard/manual actions,
+  not something to hand to a Claude session. Once done, verify the pipeline
+  with a test push before starting real annotation work. Full outstanding
+  list in Phase 2 below.
 
 <!-- This block is the "you are here" pointer. Overwrite it every shutdown.
      It lives ONLY here — never duplicate current state in another file. -->
@@ -63,20 +63,44 @@ Repo: **github.com/neely/family-archive-system**
   folder matching the expected structure) — `(locked)`
 
 ## Phase 2 — First family deployment (Ash)  ← ACTIVE
+
+**Infrastructure (blocking, do these before real annotation work):**
 - [x] Repos created: ash-archive-source (private), ash-archive (public)
-- [ ] Populate first-pass family-archive-full.json for Ash family
-- [ ] Set up GitHub Action secret (PUBLIC_REPO_TOKEN) on ash-archive-source
-      — use a fresh narrowly-scoped token for this, not a broad session PAT
-- [x] Enable GitHub Pages on ash-archive (public repo) — **superseded, see
-      JOURNAL.md 2026-07-16 correction entry.** Cloudflare Pages is the
-      actual deployment target. GitHub Pages URL should not be treated as
-      canonical.
-- [ ] Verify deploy.yml pipeline runs end to end (blocked on the secret above)
+- [x] GitHub Pages enabled then disabled — Cloudflare Pages is the actual
+      target, see NOTES.md → "Deployment target"
+- [ ] **Cloudflare Pages connected** to ash-archive (dashboard action —
+      Workers & Pages → Create → Connect to Git → neely/ash-archive → no
+      build command, output directory `/`). Not something an API token can
+      do; needs the Cloudflare dashboard.
+- [ ] Custom subdomain decided and configured for Ash (pattern:
+      `ash.benneely.com` or similar — not yet decided)
+- [ ] **PUBLIC_REPO_TOKEN secret set** on ash-archive-source (Settings →
+      Secrets → Actions) — generate a *fresh*, narrowly-scoped PAT for this
+      (contents:write on ash-archive only), do not reuse a broad session PAT
+- [ ] PUBLIC_REPO_OWNER / PUBLIC_REPO_NAME repo variables set on
+      ash-archive-source (Settings → Variables → Actions) — values: `neely`
+      / `ash-archive`
+- [ ] Deploy pipeline verified end to end with a small test push (blocked
+      on the two items above)
+- [ ] Maintainer email updated in ash-archive/index.html — currently
+      placeholder `your@email.com`, two occurrences
+
+**Content work:**
+- [ ] Populate first-pass family-archive-full.json for Ash family — see
+      NOTES.md → "Bootstrap annotation session prompt"
 - [ ] Do first real annotation session with actual Ash family material
-- [ ] Update maintainer email in index.html mailto functions (currently
-      placeholder your@email.com)
-- [ ] Capture lessons learned back into this repo's NOTES.md before
-      starting the next family
+- [ ] Real image rendering — artifact modal/grid currently show emoji
+      placeholders, not `<img>` tags. Needs fixing before the first real
+      photo is added to any family's archive. Fix in
+      family-archive-system/templates/voss-family.html first, then
+      re-copy to ash-archive/index.html (see NOTES.md → Propagation model)
+
+**Wrap-up (do before starting the next family):**
+- [ ] Capture lessons learned back into this repo's NOTES.md/PLAN.md
+- [ ] Confirm which files changed here since Ash's repos were created, and
+      manually re-sync the stabilized versions before spinning up
+      Branstrom/Beal/Neely (see NOTES.md → Propagation model — this does
+      NOT happen automatically)
 
 ## Future — Remaining families
 
