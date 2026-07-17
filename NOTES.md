@@ -326,6 +326,15 @@ For new records: `"target_id": "NEW:some_new_id"`, `"field": "full_record"`,
 For appending to an array field (e.g. adding a view to an artifact):
 `"change_action": "append"` — manage.js pushes rather than replaces.
 
+## Building the tree
+
+If a family member's material lives on Ancestry (not the case for Ash, but
+may be for a future family): export the GEDCOM first — Tree → Export Tree,
+two clicks — even though it's imperfect, it gives a bootstrap session a
+skeleton to start from rather than nothing. GEDCOM only applies where
+Ancestry data already exists; it's a shortcut when available, not a
+required step. The general-case method below works fine without one.
+
 ### Bootstrap annotation session prompt (no GEDCOM)
 
 When starting a family from scratch — no Ancestry export, just documents,

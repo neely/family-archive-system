@@ -88,6 +88,7 @@ event links back to the relevant person.
 | Image storage (current) | Repo `/images/` | Free |
 | Image storage (future, if needed) | Cloudflare R2 | Free up to 10GB |
 | Dependencies | Zero — pure HTML/CSS/JS | Free |
+| Claude API (optional, GUI text-intake automation only) | Sonnet-class model | ~$0.01–0.03/call, likely a few $/year total — chat-mode intake (no API key) works fine without this |
 | Domain (optional) | Custom subdomain, e.g. `ash.benneely.com` | ~$12/yr for the root domain, subdomains free |
 
 Total ongoing cost: $0 (or ~$12/year if using a custom domain you don't

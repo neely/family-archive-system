@@ -23,6 +23,10 @@ Repo: **github.com/neely/family-archive-system**
 - Keep README.md in sync with what's actually live.
 - Add decisions to NOTES.md when made; mark settled ones `(locked)`.
 - Check off phases below as completed.
+- **Big-session trigger:** if a session touches more than ~5 files or spans
+  more than one sitting, treat it as a big session per AGENTS.md — run all
+  five debrief questions (not just Q1/Q5), and report the shutdown routine
+  as an itemized list, not prose. Don't wait to be asked.
 
 ---
 

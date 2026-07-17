@@ -5,6 +5,76 @@ not current state. One entry per session: the shutdown debrief.
 
 ---
 
+## 2026-07-16 (session 3) — Protocol self-audit, PII reasoning, propagation model, cost figures
+
+**Did:** Person asked whether AGENTS.md discipline had actually been
+followed and whether anything from the original design conversation was
+still missing from the docs. Both were worth checking rather than asserting.
+
+Audited against AGENTS.md directly and found three real gaps: the debrief
+had only been asking Q1/Q2/Q3/Q5, dropping Q4 every time despite this
+clearly being "big session" territory; shutdown reports had been prose
+summaries instead of the itemized report the protocol specifically calls
+for (and specifically warns that prose hides gaps); and no explicit
+start-of-session sanity check had been run or stated. Ran one retroactively
+this session — found no contradictions between PLAN/NOTES/actual repo state.
+
+Then did a real gap sweep against the original design conversation (not
+just the file-transfer audit from session 2): added the actual sensitivity
+judgment behind the privacy gate (full birthdates as identity-verification
+data, minors treated conservatively regardless of the death gate, what's
+genuinely fine to publish vs. not) to NOTES.md — the previous pass had only
+captured the gate *mechanism*, not the *reasoning* a future session would
+need to make good calls with real family data. Added an explicit
+"Propagation model" section explaining there is no automatic sync between
+this hub repo and family repos — code changes here require manual re-copy,
+decisions/reasoning apply everywhere by reference since every family repo's
+docs point back here. Added Claude API cost figures (~$0.01–0.03/call, a
+few dollars/year) to the tech stack table — this had been discussed at
+some length in the original conversation but never made it into a doc.
+Added a one-line GEDCOM export tip for any future Ancestry-sourced family.
+
+**Least confident about (Q1):** Whether this second gap-sweep actually
+caught everything from the original conversation, or whether I'm still
+missing something a third read would catch. The pattern so far (two
+sweeps, two rounds of real gaps found) suggests a single pass isn't fully
+reliable for this kind of condensation work. Would be proven wrong by a
+future session — or the person, now working directly in the repos — hitting
+something else that should have been here and wasn't.
+
+**Unstated assumptions (Q2):** Assumed "capture the discussion" means
+capturing conclusions and reasoning, not a full transcript of how we got
+there — e.g. the evidence-level terminology went through a naming iteration
+(verified/putative/deprecated → confirmed/proposed/superseded) but only the
+final terms and their meaning are in NOTES.md, not the naming discussion
+itself. Assuming that's the right level of detail; a future session
+wondering "why these words specifically" wouldn't find that reasoning here.
+
+**Biggest thing being missed (Q3):** Still no automated way to catch drift
+between this hub and the family repos once real divergence starts — the
+propagation model section explains the manual process but there's no
+tooling (a script, a checklist trigger) that would flag "build.js changed
+here 3 commits ago, ash-archive-source's copy is stale." For 4 families
+this is manageable by discipline; if it ever grew past that, it'd need
+actual tooling.
+
+**What could have been done differently to make this session more useful
+(Q4):** Should have run the AGENTS.md shutdown routine as an explicit
+itemized report from the very first repo-setup session rather than waiting
+for the person to ask whether it was being followed. The protocol existing
+in the repo doesn't help if it's not actually being executed as written —
+this should be default behavior, not something that only kicks in once
+questioned.
+
+**Suggested improvement (Q5):** Add a lightweight trigger to PLAN.md's
+Conventions section: "if a session touches more than N files or spans more
+than one sitting, treat it as a big session and run the full 5-question
+debrief + itemized shutdown report without being asked." Self-invoking
+discipline is more reliable than hoping it gets applied consistently
+without a concrete trigger.
+
+---
+
 ## 2026-07-16 (correction) — Cloudflare Pages, not GitHub Pages; content transfer audit
 
 **Did:** Two corrections to the prior entry below, made in the same overall
