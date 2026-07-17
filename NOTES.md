@@ -6,6 +6,28 @@ it's the single most important file in this repo.
 
 ---
 
+## Deployment target: Cloudflare Pages, not GitHub Pages (locked, corrected 2026-07-16)
+
+- What: Public repos deploy via **Cloudflare Pages**, connected directly to
+  the GitHub repo through Cloudflare's dashboard (Workers & Pages → Create →
+  Connect to Git → select repo → no build command, output directory `/`).
+  Cloudflare auto-deploys on every push to `main`, same trigger the
+  GitHub Actions pipeline already pushes to.
+- Why: Matches the existing pattern for other projects (radio.benneely.com,
+  recipes.benneely.com) — custom subdomains on a domain already owned,
+  rather than a `neely.github.io/[repo]` URL. Cloudflare also gives R2
+  (image storage upgrade path, see Image handling below) on the same
+  platform if that's ever needed.
+- **Correction:** GitHub Pages was enabled on ash-archive during initial
+  setup (2026-07-16) before this was clarified. It should be disabled —
+  Settings → Pages → set source to "None" — or just left inert; it does not
+  conflict with Cloudflare Pages serving the same repo, but the GitHub
+  Pages URL should not be treated as the canonical site.
+- Setup per family: point Cloudflare Pages at `[family]-archive`, set a
+  custom subdomain (pattern: `[family].benneely.com` or similar, TBD per
+  family), no build step needed since the site is static HTML with a
+  runtime fetch — Cloudflare just needs to serve the files as-is.
+
 ## Multi-family model (locked)
 
 - What: One system repo (this one, `family-archive-system`) holds shared
@@ -263,6 +285,98 @@ Full workflow spec, including prompt-generation-from-archive-subset (to keep
 prompts lean as the archive grows) and paste-back validation (ID existence
 checks, field name checks, type checks): see reference/GUI_MANAGER_SPEC.md
 → "Phase 1 Intake: Chat Interface Workflow."
+
+### What Claude does during an annotation session
+
+When fed the current archive + new source material, the session should:
+- **Extract** every knowable field: names, dates, places, relationships,
+  physical descriptions, occupations, events
+- **Match** mentioned people against existing records — "this letter
+  mentions Aunt Rosa, is she already margaret_kowalski_1934's sibling
+  rosa_kowalski_1912, or a new person?"
+- **Flag conflicts** — "this document says 1889, existing record says 1891"
+- **Surface open questions** for anything ambiguous — illegible names, torn
+  pages, disputed dates
+- **Set confidence** based on source type (primary document = high,
+  secondary/oral = med, inference/rumor = low)
+- **Mark `unannotated: false`** on artifact records once the description
+  meets a reasonable threshold (not just a placeholder)
+
+### Handwriting and image quality — practical expectations
+
+- Printed/typed documents, census records: high extraction quality
+- Clear photographs: good for identification if existing records provide
+  context to match against
+- Cursive letters, especially 19th century: do a rough manual transcription
+  first, then feed the transcription in rather than relying on the model to
+  read the handwriting directly from an image
+- iPhone photos of artifacts: resize before ingest (see Image handling below)
+
+### The mailto templates (used by the site, not by annotation sessions)
+
+Both live in index.html and require no backend — clicking either opens the
+person's mail client pre-filled, they type their addition, send it, and the
+maintainer feeds the reply into an annotation session (Path B above).
+
+**Artifact "Send an update" button** — pre-fills:
+```
+Subject: Archive update — {artifact_id}: {artifact_title}
+
+Hi — I have something to add or correct about this archive item.
+─────────────────────────────
+Artifact ID: {id}
+Title / Type / Date / Condition / Source / People linked
+What we currently know: {desc}
+Confidence: {confidence label}
+─────────────────────────────
+My additions / corrections:
+[Type your notes here]
+```
+
+**Person "Propose a change" button** — pre-fills the same shape, plus a
+checklist of common change types (correct a date, add/remove a parent/
+sibling/spouse/child, correct a name, add a location, add an artifact,
+other) so the sender only has to check a box and fill in specifics rather
+than compose free-form.
+
+Both are implemented as `buildMailtoLink()` / `buildPersonMailtoLink()` in
+index.html — search there for the exact current templates, this is meant as
+orientation, not the source of truth for the live wording.
+
+### The manage.js review loop, walked through
+
+```
+node manage.js
+
+─────────────────────────────────────────────
+Change chg_001  [1 of 3 pending]
+Target:   margaret_kowalski_1934 (Margaret Kowalski)
+Field:    born_full
+Current:  1934-08-03  (source: oral history, Sep 2024)
+Proposed: 1934-09-03  (source: birth cert scan, Nov 2024)
+From:     Diane Voss-Kettner (mailto)  —  2024-11-14
+
+Accept [a], Reject [r], Skip [s], Quit [q]:
+```
+
+Accept moves the current value to `{field}_history` marked `superseded`,
+writes the proposed value as the new `confirmed` tracked value. Reject
+prompts for an optional reason, main record untouched. Skip leaves it
+`proposed` for next time. `node manage.js --summary` shows the queue state
+without entering the review loop.
+
+### Conflict handling
+
+When a proposed change conflicts with a confirmed value, the annotation
+session should flag it in the change entry's `notes` field rather than
+silently picking one:
+```
+"notes": "CONFLICT: current value (1934-08-03) from oral history. Proposed
+value (1934-09-03) from birth certificate — higher-confidence primary
+source, recommend accept."
+```
+Claude recommends, the maintainer decides via manage.js. The losing value
+isn't discarded — it moves to `_history` with a note explaining why it lost.
 
 ---
 

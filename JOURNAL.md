@@ -5,6 +5,48 @@ not current state. One entry per session: the shutdown debrief.
 
 ---
 
+## 2026-07-16 (correction) — Cloudflare Pages, not GitHub Pages; content transfer audit
+
+**Did:** Two corrections to the prior entry below, made in the same overall
+working session after a short break.
+
+1. **Deployment target corrected.** GitHub Pages was enabled on ash-archive
+   in the prior entry — wrong call. The maintainer's actual pattern (matches
+   radio.benneely.com, recipes.benneely.com) is Cloudflare Pages on custom
+   subdomains. Documented as a locked decision in NOTES.md. GitHub Pages
+   should be disabled on ash-archive to avoid two live URLs for the same
+   site; noted in PLAN.md for follow-up (needs manual dashboard action or a
+   DELETE call to the Pages API).
+
+2. **Content transfer audit.** Did a section-by-section diff of the original
+   HANDOFF.md against what actually landed in NOTES.md/README.md/PLAN.md
+   during the initial repo setup. Found real gaps: the Site Features
+   description, the full mailto email templates (contribute + propose-a-
+   change), explicit "what Claude does during an annotation session"
+   behavior list, handwriting/image-quality practical notes, the manage.js
+   review-loop walkthrough, conflict-handling example, the full first-time
+   setup checklist, and the Technology Stack cost table had all been
+   condensed away or dropped during the original condensation into the
+   five-file structure. Restored all of them — Site Features and Tech Stack
+   went into README.md (describes the product, not the reasoning), the rest
+   into NOTES.md.
+
+**Least confident about (Q1):** Whether this pass caught everything. The
+audit was section-header-driven (diffing HANDOFF.md's `##`/`###` headers
+against NOTES.md's) which catches missing sections but not necessarily
+missing *detail within* a section that was kept. Would be proven wrong by a
+future session hitting a gap this pass didn't catch — worth doing one more
+close prose read-through of HANDOFF.md against NOTES.md if time allows,
+rather than trusting the header-diff was fully sufficient.
+
+**Suggested improvement (Q5):** When doing this kind of condensation-into-
+a-template work in the future, do the content audit *immediately* after the
+condensation, same session, rather than assuming it transferred cleanly and
+discovering gaps two sessions later when the user asks. Cheaper to catch
+immediately.
+
+---
+
 ## 2026-07-16 — Framework design session + repo setup
 
 **Did:** Designed the full system in a single extended conversation (outside

@@ -67,8 +67,10 @@ Repo: **github.com/neely/family-archive-system**
 - [ ] Populate first-pass family-archive-full.json for Ash family
 - [ ] Set up GitHub Action secret (PUBLIC_REPO_TOKEN) on ash-archive-source
       — use a fresh narrowly-scoped token for this, not a broad session PAT
-- [x] Enable GitHub Pages on ash-archive (public repo) — live at
-      https://neely.github.io/ash-archive/
+- [x] Enable GitHub Pages on ash-archive (public repo) — **superseded, see
+      JOURNAL.md 2026-07-16 correction entry.** Cloudflare Pages is the
+      actual deployment target. GitHub Pages URL should not be treated as
+      canonical.
 - [ ] Verify deploy.yml pipeline runs end to end (blocked on the secret above)
 - [ ] Do first real annotation session with actual Ash family material
 - [ ] Update maintainer email in index.html mailto functions (currently
@@ -77,6 +79,14 @@ Repo: **github.com/neely/family-archive-system**
       starting the next family
 
 ## Future — Remaining families
+
+| Family | Status | Private repo | Public repo |
+|--------|--------|--------------|-------------|
+| Ash | In progress | ash-archive-source | ash-archive |
+| Branstrom | Not started | — | — |
+| Beal | Not started | — | — |
+| Neely | Not started | — | — |
+
 - Branstrom — not started, mirrors Ash pattern once proven
 - Beal — not started
 - Neely — not started
